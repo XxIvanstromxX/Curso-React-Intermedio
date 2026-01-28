@@ -7,7 +7,7 @@ export default function MainLayout({ children }) {
 
       <main className="flex-1 bg-amber-200">{children}</main>
 
-      <footer className="text-center"> Hecho con amor a la programación</footer>
+      <footer className="text-center"> Hecho con aprecio a la programacion</footer>
     </div>
   );
 }
