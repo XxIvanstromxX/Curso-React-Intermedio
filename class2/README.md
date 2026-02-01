@@ -1,54 +1,57 @@
 
-# Clase 1 — Introducción a React con Vite
+# Clase 2 — Estado en React: useState y useReducer
 
-Bienvenido a la primera clase del curso. En este repositorio encontrarás una configuración mínima con React y Vite para comenzar a practicar componentes, rutas y layout básicos.
+En esta clase profundizamos en el manejo de estado en React. Partimos con un repaso práctico de `useState`, revisando los errores más comunes al usarlo, y cerramos con lo más importante: entender cómo funciona `useReducer` y cómo implementarlo en un flujo real de trabajo.
 
 **Objetivos de la clase**:
-- Entender la estructura de un proyecto React creado con Vite.
-- Ejecutar la aplicación en modo desarrollo.
-- Revisar los componentes del layout (Header y MainLayout).
+- Repasar `useState` y buenas prácticas de actualización de estado.
+- Identificar errores frecuentes al trabajar con estado.
+- Comprender el patrón de reducer.
+- Implementar `useReducer` para manejar un estado más complejo.
+
+**Temas principales**:
+- Repaso de `useState` y su uso correcto.
+- Errores comunes con `useState`:
+	- Actualizaciones con estado “stale” y solución con actualizador funcional.
+	- Mutación directa de estado y enfoque inmutable.
+	- Estado derivado y cómo calcularlo en el render.
+- Fundamentos de `useReducer`.
+- Implementación de `useReducer` para gestionar clientes (acciones de agregar, eliminar y actualizar).
+
+**Componentes y ejemplos vistos**:
+- Ejemplos de errores con `useState`.
+- Contador básico con `useState`.
+- Página de clientes con `useReducer` y reducer dedicado.
+
+**Estructura principal del proyecto**:
+- [src/components/errors/AsyncState.jsx](src/components/errors/AsyncState.jsx)
+- [src/components/errors/DirectMutationState.jsx](src/components/errors/DirectMutationState.jsx)
+- [src/components/errors/DerivateState.jsx](src/components/errors/DerivateState.jsx)
+- [src/components/pruebas/Contador.jsx](src/components/pruebas/Contador.jsx)
+- [src/reducers/clientsReducer.js](src/reducers/clientsReducer.js)
+- [src/pages/ClientsPage.jsx](src/pages/ClientsPage.jsx)
+- [src/components/clients/ClientActions.jsx](src/components/clients/ClientActions.jsx)
+- [src/components/clients/ClientList.jsx](src/components/clients/ClientList.jsx)
 
 **Tecnologías**:
 - React 18+
 - Vite
+- Tailwind CSS
 - ESLint (configuración básica)
 
-**Estructura principal**:
-- [index.html](index.html#L1)
-- [vite.config.js](vite.config.js#L1)
-- [package.json](package.json#L1)
-- [src/main.jsx](src/main.jsx#L1) — punto de entrada
-- [src/App.jsx](src/App.jsx#L1) — componente raíz
-- [src/index.css](src/index.css#L1) — estilos globales
-- [src/components/layout/Header.jsx](src/components/layout/Header.jsx#L1) — cabecera
-- [src/components/layout/MainLayout.jsx](src/components/layout/MainLayout.jsx#L1) — layout principal
+**Instalación y ejecución**:
+- npm install
+- npm run dev
 
-Instalación y ejecución (macOS / Linux / Windows):
+**Comandos útiles**:
+- npm run build — crear build de producción.
+- npm run preview — previsualizar el build localmente.
+- npm run lint — revisar el código con ESLint.
 
-```bash
-npm install
-npm run dev
-```
+**Notas de la clase**:
+- En los ejemplos de errores con `useState` se muestran problemas de estado “stale”, mutación directa y estado derivado.
+- El flujo con `useReducer` utiliza acciones para agregar, eliminar y actualizar clientes.
+- Revisa cómo se conecta la página de clientes con el reducer y las acciones.
 
-Comandos útiles:
-
-- `npm run build` — crear build de producción.
-- `npm run preview` — previsualizar el build localmente.
-
-Notas para la clase:
-- Revisa `src/components/layout/Header.jsx` y `src/components/layout/MainLayout.jsx` para ver cómo se organiza el layout.
-- Observa cómo `App.jsx` importa y usa el layout y los estilos.
-- Experimenta cambiando el contenido del `Header` y añade un nuevo componente en `src/components`.
-
-Ejercicios propuestos (rápidos):
-1. Añadir un componente `Footer` y colocarlo dentro de `MainLayout`.
-2. Crear una nueva ruta (o sección) en `App.jsx` que muestre un componente `About`.
-3. Estilizar el `Header` usando variables CSS en `src/index.css`.
-
-¿Qué sigue? Si quieres, puedo:
-- Ejecutar la app localmente y confirmarte que arranca.
-- Añadir el componente `Footer` de ejemplo.
-- Crear un pequeño script de lint/format configurado.
-
-Autor: Instructor — Iván Martínez
+Autor del código: Iván Martínez
 
