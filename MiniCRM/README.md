@@ -1,54 +1,54 @@
+# Clase 3 — Context API en React
 
-# Clase 1 — Introducción a React con Vite
-
-Bienvenido a la primera clase del curso. En este repositorio encontrarás una configuración mínima con React y Vite para comenzar a practicar componentes, rutas y layout básicos.
+En esta clase se incorporó Context API para compartir el estado de clientes en toda la app, usando un `Provider` y `useContext` para consumir el estado y las acciones.
 
 **Objetivos de la clase**:
-- Entender la estructura de un proyecto React creado con Vite.
-- Ejecutar la aplicación en modo desarrollo.
-- Revisar los componentes del layout (Header y MainLayout).
+- Implementar un `Context` para el estado de clientes.
+- Conectar el `Provider` con la aplicación.
+- Consumir estado y `dispatch` desde componentes.
+
+**Temas principales**:
+- Creación de `ClientsContext` y `ClientsProvider` con `useReducer`.
+- Integración del `Provider` en el árbol principal.
+- Consumo del contexto en componentes de acciones y listado.
+
+**Componentes y archivos vistos**:
+- [src/context/ClientsContext.jsx](src/context/ClientsContext.jsx)
+- [src/reducers/clientsReducer.js](src/reducers/clientsReducer.js)
+- [src/pages/ClientsPage.jsx](src/pages/ClientsPage.jsx)
+- [src/components/clients/ClientActions.jsx](src/components/clients/ClientActions.jsx)
+- [src/components/clients/ClientList.jsx](src/components/clients/ClientList.jsx)
+- [src/App.jsx](src/App.jsx)
 
 **Tecnologías**:
 - React 18+
 - Vite
+- Tailwind CSS
 - ESLint (configuración básica)
 
-**Estructura principal**:
-- [index.html](index.html#L1)
-- [vite.config.js](vite.config.js#L1)
-- [package.json](package.json#L1)
-- [src/main.jsx](src/main.jsx#L1) — punto de entrada
-- [src/App.jsx](src/App.jsx#L1) — componente raíz
-- [src/index.css](src/index.css#L1) — estilos globales
-- [src/components/layout/Header.jsx](src/components/layout/Header.jsx#L1) — cabecera
-- [src/components/layout/MainLayout.jsx](src/components/layout/MainLayout.jsx#L1) — layout principal
+**Instalación y ejecución**:
+- npm install
+- npm run dev
 
-Instalación y ejecución (macOS / Linux / Windows):
+**Comandos útiles**:
+- npm run build — crear build de producción.
+- npm run preview — previsualizar el build localmente.
+- npm run lint — revisar el código con ESLint.
 
-```bash
-npm install
-npm run dev
-```
+**Notas de la clase**:
+- El estado de clientes se comparte con `ClientsContext`.
+- `ClientActions` y `ClientList` consumen el contexto con `useContext`.
 
-Comandos útiles:
+---
 
-- `npm run build` — crear build de producción.
-- `npm run preview` — previsualizar el build localmente.
+# Clase 4 — (espacio reservado)
 
-Notas para la clase:
-- Revisa `src/components/layout/Header.jsx` y `src/components/layout/MainLayout.jsx` para ver cómo se organiza el layout.
-- Observa cómo `App.jsx` importa y usa el layout y los estilos.
-- Experimenta cambiando el contenido del `Header` y añade un nuevo componente en `src/components`.
+---
 
-Ejercicios propuestos (rápidos):
-1. Añadir un componente `Footer` y colocarlo dentro de `MainLayout`.
-2. Crear una nueva ruta (o sección) en `App.jsx` que muestre un componente `About`.
-3. Estilizar el `Header` usando variables CSS en `src/index.css`.
+# Clase 5 — (espacio reservado)
 
-¿Qué sigue? Si quieres, puedo:
-- Ejecutar la app localmente y confirmarte que arranca.
-- Añadir el componente `Footer` de ejemplo.
-- Crear un pequeño script de lint/format configurado.
+---
 
-Autor: Instructor — Iván Martínez
+# Clase 6 — (espacio reservado)
 
+Autor del código: Iván Martínez
