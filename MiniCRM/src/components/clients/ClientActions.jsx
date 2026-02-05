@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { ClientsContext } from '../../context/ClientsContext';
+import { ClientsContext } from '../../contexts/ClientsContext';
 
 export default function ClientActions() {
   const { dispatch } = useContext(ClientsContext);
