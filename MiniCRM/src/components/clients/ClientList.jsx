@@ -1,24 +1,10 @@
-import { useContext } from 'react';
-import { ClientsContext } from '../../context/ClientsContext';
-
-export default function ClientList() {
-  const { state, dispatch } = useContext(ClientsContext);
-  const { clients } = state;
-
-  if (clients.length === 0) {
-    return <p>No clients available.</p>;
-  }
-
+export default function ClientList({ clients }) {
   return (
     <ul>
       {clients.map((client) => (
         <li key={client.id}>
-          {client.name}
-          <button
-            onClick={() =>
-              dispatch({ type: 'REMOVE_CLIENT', payload: client.id })
-            }
-          >
+          {client.name} - {client.email} - {client.phone} - {client.jobArea}
+          <button className="bg-red-500 rounded-md text-white ml-2.5 px-2 py-0.5 border-amber-50 border">
             Remove
           </button>
         </li>
