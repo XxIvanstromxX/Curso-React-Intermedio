@@ -1,6 +1,10 @@
 import { useContext, useEffect } from 'react';
 import { ClientsContext } from '../contexts/ClientsContext';
-import { getClients } from '../services/clientsService';
+import {
+  getClients,
+  addClient,
+  updateClient,
+} from '../services/clientsService';
 
 export function useClients() {
   const { state, dispatch } = useContext(ClientsContext);
@@ -17,12 +21,35 @@ export function useClients() {
       }
     };
 
-    fetchClients();
-  }, [dispatch]);
+    if (!state.fetched) {
+      fetchClients();
+    }
+  }, [dispatch, state.fetched]);
+
+  const addNewClient = async (client) => {
+    try {
+      const newClient = await addClient(client);
+      console.log('Nuevo usuario agregado: ' + client);
+      dispatch({ type: 'ADD_CLIENT_SUCCESS', payload: newClient });
+    } catch (error) {
+      dispatch({ type: 'ADD_CLIENT_ERROR', payload: error.message });
+    }
+  };
+
+  const updateExistingClient = async (id, client) => {
+    try {
+      const updatedClient = await updateClient(id, client);
+      dispatch({ type: 'UPDATE_CLIENT_SUCCESS', payload: updatedClient });
+    } catch (error) {
+      dispatch({ type: 'UPDATE_CLIENT_ERROR', payload: error.message });
+    }
+  };
 
   return {
     clients: state.clients,
     loading: state.loading,
     error: state.error,
+    addNewClient,
+    updateExistingClient,
   };
 }
