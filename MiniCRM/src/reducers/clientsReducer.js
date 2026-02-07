@@ -2,6 +2,7 @@ export const initialState = {
   clients: [],
   loading: false,
   error: null,
+  fetched: false,
 };
 
 export function clientsReducer(state, action) {
@@ -11,6 +12,7 @@ export function clientsReducer(state, action) {
         ...state,
         loading: true,
         error: null,
+        fetched: false,
       };
 
     case 'FETCH_CLIENTS_SUCCESS':
@@ -18,6 +20,7 @@ export function clientsReducer(state, action) {
         ...state,
         loading: false,
         clients: action.payload,
+        fetched: true,
       };
 
     case 'FETCH_CLIENTS_ERROR':
@@ -27,10 +30,16 @@ export function clientsReducer(state, action) {
         error: action.payload,
       };
 
-    case 'ADD_CLIENT':
+    case 'ADD_CLIENT_SUCCESS':
       return {
         ...state,
         clients: [...state.clients, action.payload],
+      };
+
+    case 'ADD_CLIENT_ERROR':
+      return {
+        ...state,
+        error: action.payload,
       };
 
     case 'REMOVE_CLIENT':
@@ -39,13 +48,20 @@ export function clientsReducer(state, action) {
         clients: state.clients.filter((client) => client.id !== action.payload),
       };
 
-    case 'UPDATE_CLIENT':
+    case 'UPDATE_CLIENT_SUCCESS':
       return {
         ...state,
         clients: state.clients.map((client) =>
           client.id === action.payload.id ? action.payload : client,
         ),
       };
+
+    case 'UPDATE_CLIENT_ERROR':
+      return {
+        ...state,
+        error: action.payload,
+      };
+
     default:
       return state;
   }
