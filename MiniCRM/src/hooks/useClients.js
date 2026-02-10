@@ -4,6 +4,7 @@ import {
   getClients,
   addClient,
   updateClient,
+  deleteClient,
 } from '../services/clientsService';
 
 export function useClients() {
@@ -45,11 +46,21 @@ export function useClients() {
     }
   };
 
+  const removeClient = async (id) => {
+    try {
+      await deleteClient(id);
+      dispatch({ type: 'REMOVE_CLIENT_SUCCESS', payload: id });
+    } catch (error) {
+      dispatch({ type: 'REMOVE_CLIENT_ERROR', payload: error.message });
+    }
+  };
+
   return {
     clients: state.clients,
     loading: state.loading,
     error: state.error,
     addNewClient,
     updateExistingClient,
+    removeClient,
   };
 }
