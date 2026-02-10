@@ -1,4 +1,5 @@
 import ClientForm from './ClientForm';
+import ClientDelete from './ClientDelete';
 import { useState } from 'react';
 
 export default function ClientList({ clients }) {
@@ -23,9 +24,7 @@ export default function ClientList({ clients }) {
           </div>
 
           <div className="flex items-center justify-end gap-2">
-            <button className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-md text-sm">
-              Eliminar
-            </button>
+            <ClientDelete clientId={client.id} />
 
             <button
               onClick={() =>
