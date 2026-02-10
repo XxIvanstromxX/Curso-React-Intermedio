@@ -42,10 +42,16 @@ export function clientsReducer(state, action) {
         error: action.payload,
       };
 
-    case 'REMOVE_CLIENT':
+    case 'REMOVE_CLIENT_SUCCESS':
       return {
         ...state,
         clients: state.clients.filter((client) => client.id !== action.payload),
+      };
+
+    case 'REMOVE_CLIENT_ERROR':
+      return {
+        ...state,
+        error: action.payload,
       };
 
     case 'UPDATE_CLIENT_SUCCESS':
