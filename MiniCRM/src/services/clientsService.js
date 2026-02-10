@@ -42,6 +42,19 @@ export const updateClient = async (id, client) => {
   }
 };
 
+export const deleteClient = async (id) => {
+  try {
+    const response = await fetch(`${API_URL}/${id}`, {
+      method: 'DELETE',
+    });
+    if (!response.ok) {
+      throw new Error('Error al eliminar un client');
+    }
+  } catch (error) {
+    throw new Error('Error al eliminar un client' + error);
+  }
+};
+
 /*
 Esto es un objeto de js
 const objeto = {
