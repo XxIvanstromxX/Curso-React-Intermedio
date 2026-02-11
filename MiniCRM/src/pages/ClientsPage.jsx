@@ -1,11 +1,19 @@
 import ClientsList from '../components/clients/ClientList';
 import ClientForm from '../components/clients/ClientForm';
 import { useClients } from '../hooks/useClients';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 export default function ClientsPage() {
   const { clients, loading, error } = useClients();
   const [modalOpen, setModalOpen] = useState(false);
+
+  const handleToggleModal = useCallback(() => {
+    setModalOpen((open) => !open);
+  }, []);
+
+  const handleCloseModal = useCallback(() => {
+    setModalOpen(false);
+  }, []);
 
   return (
     <div className="max-w-7xl mx-auto p-4 flex flex-col gap-4">
@@ -14,7 +22,7 @@ export default function ClientsPage() {
       </h1>
 
       <button
-        onClick={() => setModalOpen(!modalOpen)}
+        onClick={() => handleToggleModal()}
         className="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded-md text-lg mb-4 self-end-safe"
       >
         Agregar Cliente
@@ -25,7 +33,7 @@ export default function ClientsPage() {
       {error && <p>Error {error}</p>}
 
       {modalOpen && (
-        <ClientForm existingClient={null} onClose={() => setModalOpen(false)} />
+        <ClientForm existingClient={null} onClose={() => handleCloseModal()} />
       )}
       <ClientsList clients={clients} />
     </div>
