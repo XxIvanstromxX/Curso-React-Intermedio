@@ -1,13 +1,13 @@
 import { useClients } from '../../hooks/useClients';
-import { useState } from 'react';
+import { useState, useCallback, memo } from 'react';
 
-export default function ClientDelete({ clientId }) {
+function ClientDelete({ clientId }) {
   const { removeClient } = useClients();
   const [confirming, setConfirming] = useState(false);
 
-  const handleDelete = () => {
+  const handleDelete = useCallback(() => {
     removeClient(clientId);
-  };
+  }, [removeClient, clientId]);
 
   return (
     <div>
@@ -38,3 +38,5 @@ export default function ClientDelete({ clientId }) {
     </div>
   );
 }
+
+export default memo(ClientDelete);
