@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useCallback } from 'react';
 import { ClientsContext } from '../contexts/ClientsContext';
 import {
   getClients,
@@ -27,33 +27,42 @@ export function useClients() {
     }
   }, [dispatch, state.fetched]);
 
-  const addNewClient = async (client) => {
-    try {
-      const newClient = await addClient(client);
-      console.log('Nuevo usuario agregado: ' + client);
-      dispatch({ type: 'ADD_CLIENT_SUCCESS', payload: newClient });
-    } catch (error) {
-      dispatch({ type: 'ADD_CLIENT_ERROR', payload: error.message });
-    }
-  };
+  const addNewClient = useCallback(
+    async (client) => {
+      try {
+        const newClient = await addClient(client);
+        console.log('Nuevo usuario agregado: ' + client);
+        dispatch({ type: 'ADD_CLIENT_SUCCESS', payload: newClient });
+      } catch (error) {
+        dispatch({ type: 'ADD_CLIENT_ERROR', payload: error.message });
+      }
+    },
+    [dispatch],
+  );
 
-  const updateExistingClient = async (id, client) => {
-    try {
-      const updatedClient = await updateClient(id, client);
-      dispatch({ type: 'UPDATE_CLIENT_SUCCESS', payload: updatedClient });
-    } catch (error) {
-      dispatch({ type: 'UPDATE_CLIENT_ERROR', payload: error.message });
-    }
-  };
+  const updateExistingClient = useCallback(
+    async (id, client) => {
+      try {
+        const updatedClient = await updateClient(id, client);
+        dispatch({ type: 'UPDATE_CLIENT_SUCCESS', payload: updatedClient });
+      } catch (error) {
+        dispatch({ type: 'UPDATE_CLIENT_ERROR', payload: error.message });
+      }
+    },
+    [dispatch],
+  );
 
-  const removeClient = async (id) => {
-    try {
-      await deleteClient(id);
-      dispatch({ type: 'REMOVE_CLIENT_SUCCESS', payload: id });
-    } catch (error) {
-      dispatch({ type: 'REMOVE_CLIENT_ERROR', payload: error.message });
-    }
-  };
+  const removeClient = useCallback(
+    async (id) => {
+      try {
+        await deleteClient(id);
+        dispatch({ type: 'REMOVE_CLIENT_SUCCESS', payload: id });
+      } catch (error) {
+        dispatch({ type: 'REMOVE_CLIENT_ERROR', payload: error.message });
+      }
+    },
+    [dispatch],
+  );
 
   return {
     clients: state.clients,
