@@ -2,11 +2,11 @@ import search from '../../assets/search.svg';
 
 export default function Header() {
   return (
-    <nav className="relative flex items-center justify-between bg-[#f9f9f9] p-4 shadow-md max-w-7xl  mx-auto w-7xl mt-3 mb-4 rounded-3xl">
+    <nav className="relative flex items-center justify-between bg-[#f9f9f9] p-4 shadow-md max-w-7xl  mx-auto w-sm lg:w-7xl mt-3 mb-4 rounded-3xl">
       <div>
         <h1 className="text-xl font-bold text-gray-700">MiniCRM</h1>
       </div>
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md">
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-38 lg:w-full max-w-md">
         <img
           src={search}
           alt="Search"
