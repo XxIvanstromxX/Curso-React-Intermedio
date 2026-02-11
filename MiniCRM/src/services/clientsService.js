@@ -1,4 +1,4 @@
-const API_URL = 'https://69840783885008c00dafdee6.mockapi.io/api/clients';
+const API_URL = import.meta.env.VITE_API_URL;
 
 export async function getClients() {
   try {
@@ -47,9 +47,8 @@ export const deleteClient = async (id) => {
     const response = await fetch(`${API_URL}/${id}`, {
       method: 'DELETE',
     });
-    if (!response.ok) {
-      throw new Error('Error al eliminar un client');
-    }
+    const data = await response.json();
+    return data;
   } catch (error) {
     throw new Error('Error al eliminar un client' + error);
   }
